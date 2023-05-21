@@ -16,9 +16,8 @@ export default function Header() {
       </noscript>
       <div className={styles.signedInStatus}>
         <p
-          className={`nojs-show ${
-            !session && loading ? styles.loading : styles.loaded
-          }`}
+          className={`nojs-show ${!session && loading ? styles.loading : styles.loaded
+            }`}
         >
           {!session && (
             <>
@@ -86,6 +85,9 @@ export default function Header() {
           </li>
           <li className={styles.navItem}>
             <Link href="/me">Me</Link>
+          </li>
+          <li className={styles.navItem}>
+            <Link href="/test">Next.js App Router Migration</Link>
           </li>
         </ul>
       </nav>
