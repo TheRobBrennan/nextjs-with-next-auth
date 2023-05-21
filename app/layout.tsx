@@ -3,7 +3,7 @@ import "../styles/styles.css"
 import { Metadata } from 'next';
 import { Session } from 'next-auth'
 import { headers } from 'next/headers'
-import AuthContext from './AuthContext'
+import AuthContext from '../contexts/authentication/AuthContext'
 
 export const metadata: Metadata = {
   title: '[DEMO] Next.js v13 with next-auth',
