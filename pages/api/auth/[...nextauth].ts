@@ -38,6 +38,20 @@ export const authOptions: NextAuthOptions = {
       token.userRole = "admin"
       return token
     },
+    async signIn({ user }) {
+      let isAllowedToSignIn = true
+      // const allowedUser = [
+      //   'YOURGITHUBACCID',
+      // ];
+      console.log('User:\n' + JSON.stringify(user, null, 2));
+      // if (allowedUser.includes(String(user.id))) {
+      //   isAllowedToSignIn = true
+      // }
+      // else {
+      //   isAllowedToSignIn = false
+      // }
+      return isAllowedToSignIn
+    }
   },
 }
 
