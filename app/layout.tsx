@@ -1,4 +1,5 @@
 // The root layout replaces the pages/_app.tsx and pages/_document.tsx files
+import "../pages/styles.css"
 import { Metadata } from 'next';
 import { Session } from 'next-auth'
 import { headers } from 'next/headers'
