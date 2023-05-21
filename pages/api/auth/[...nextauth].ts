@@ -33,11 +33,27 @@ export const authOptions: NextAuthOptions = {
     //   version: "2.0",
     // }),
   ],
+  // https://next-auth.js.org/configuration/callbacks
   callbacks: {
     async jwt({ token }) {
       token.userRole = "admin"
       return token
     },
+    // async signIn({ user }) {
+    //   // 2023.05.21 Reference code demonstrating a crude example of restricting GitHub auth to specific users
+    //   console.log('User:\n' + JSON.stringify(user, null, 2));
+    //   // let isAllowedToSignIn = true
+    //   // const allowedUser = [
+    //   //   'YOURGITHUBACCID',
+    //   // ];
+    //   // if (allowedUser.includes(String(user.id))) {
+    //   //   isAllowedToSignIn = true
+    //   // }
+    //   // else {
+    //   //   isAllowedToSignIn = false
+    //   // }
+    //   // return isAllowedToSignIn
+    // }
   },
 }
 

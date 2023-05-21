@@ -1,14 +1,12 @@
-import { Metadata } from 'next';
+'use client'
+import Header from '../../components/header'
 
 const PAGE_TITLE = "[TEST] Next.js v13 migration"
-
-export const metadata: Metadata = {
-  title: PAGE_TITLE,
-};
 
 export default function TestMigrationPage() {
   return (
     <>
+      <Header />
       <h1>{PAGE_TITLE}</h1>
       <p>
         It's time to begin transitioning from{" "}
