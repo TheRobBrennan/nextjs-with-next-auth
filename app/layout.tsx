@@ -1,21 +1,43 @@
 // The root layout replaces the pages/_app.tsx and pages/_document.tsx files
 import { Metadata } from 'next';
+import { Session } from 'next-auth'
+import { headers } from 'next/headers'
+import AuthContext from './AuthContext'
 
 export const metadata: Metadata = {
-  title: 'Home',
-  description: 'Welcome to Next.js',
+  title: '[DEMO] Next.js v13 with next-auth',
+  description: 'Welcome to Next.js v13 with next-auth',
+}
+async function getSession(cookie: string): Promise<Session> {
+  const response = await fetch(`${process.env.NEXTAUTH_URL}/api/auth/session`, {
+    headers: {
+      cookie,
+    },
+  });
+
+  const session = await response.json();
+
+  return Object.keys(session).length > 0 ? session : null;
 }
 
-export default function RootLayout({
-  // Layouts must accept a children prop.
-  // This will be populated with nested layouts or pages
+export default async function RootLayout({
   children,
 }: {
-  children: React.ReactNode;
+  children: React.ReactNode,
 }) {
+  const session = await getSession(headers().get('cookie') ?? '');
   return (
     <html lang="en">
-      <body>{children}</body>
+      {/*
+        <head /> will contain the components returned by the nearest parent
+        head.tsx. Find out more at https://beta.nextjs.org/docs/api-reference/file-conventions/head
+      */}
+      <head />
+      <body>
+        <AuthContext session={session}>
+          {children}
+        </AuthContext>
+      </body>
     </html>
-  );
+  )
 }
